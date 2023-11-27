@@ -36,6 +36,8 @@ jobs:
         appname: 'VeraDemo'
         createprofile: false
         filepath: 'app/target/verademo.war'
+        vid: '${{ secrets.VID }}'
+        vkey: '${{ secrets.VKEY }}'
 
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
