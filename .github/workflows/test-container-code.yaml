@@ -25,8 +25,8 @@ jobs:
         - name: checkout
           uses: actions/checkout@v2
 
-        - name: container-scan action step
-          id: container-scan
+        - name: Veracode Pipeline-Scan
+          uses: veracode/Veracode-pipeline-scan-action@v1.0.10
           uses: ./
           with:
             vid: ${{ secrets.VID }}
