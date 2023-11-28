@@ -28,7 +28,7 @@ jobs:
         # - name: Veracode Pipeline-Scan
         #   uses: veracode/Veracode-pipeline-scan-action@v1.0.10
         - name: Verracode Container/IaC/Secrets action step
-        uses: veracode/container_iac_secrets_scanning@v1.0.0
+          uses: veracode/container_iac_secrets_scanning@v1.0.0
           with:
             file: 'app/target/verademo.war'
             vid: ${{ secrets.VID }}
