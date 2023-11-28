@@ -1,27 +1,26 @@
 on: 
   push:
   workflow_dispatch:
-    
 
 jobs:
-
   container-scan:
-      runs-on: ubuntu-latest
-      name: container scan
+    runs-on: ubuntu-latest
+    name: container scan
 
-      steps:
-        - name: checkout
-          uses: actions/checkout@v2
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
 
-        - name: container-scan action step
-          id: container-scan
-          uses: ./
-          with:
-            vid: ${{ secrets.VID }}
-            vkey: ${{ secrets.VKEY }}
-            command: "scan" 
-            type: "directory"
-            source: "./"
-            format: "json"
-            debug: 1
-            fail_build: false
+      - name: container-scan action step
+        id: container-scan
+        run: docker run openjdk:8-jre-alpine /entrypoint.sh -c
+        env:
+          VID: ${{ secrets.VID }}
+          VKEY: ${{ secrets.VKEY }}
+        with:
+          # Additional parameters for the container-scan action if needed
+          type: "directory"
+          source: "./"
+          format: "json"
+          debug: 1
+          fail_build: false
