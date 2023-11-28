@@ -12,16 +12,16 @@ jobs:
       name: container scan
 
       steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build Image
-        uses: docker/build-push-action@v4
-        with:
-          push: false
-          tags: app:latest
-      - name: docker ls
-        run: |
-          docker images 
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Build Image
+          uses: docker/build-push-action@v4
+          with:
+            push: false
+            tags: app:latest
+        - name: docker ls
+          run: |
+            docker images 
         - name: checkout
           uses: actions/checkout@v2
 
