@@ -34,6 +34,6 @@ jobs:
             type: "directory"
             source: "./"
             format: "json"
-            debug: 1
+            debug: false
             fail_build: false
 #
