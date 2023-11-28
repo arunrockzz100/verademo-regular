@@ -25,6 +25,23 @@ jobs:
         - name: checkout
           uses: actions/checkout@v2
 
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it and copies all sources into ZIP file for submitting for analysis. Replace this section with your applications build steps
+        - uses: actions/checkout@v3
+          with:
+            repository: ''
+
+        - name: Build with Maven # Compiling the .war binary from the checked out repo source code to upload to the scanner in the next step
+          run: mvn -B package --file app/pom.xml
+
+        - name: Veracode Upload And Scan
+          uses: veracode/veracode-uploadandscan-action@0.2.6
+          with:
+            appname: 'VeraDemo'
+            createprofile: false
+            filepath: 'app/target/verademo.war'
+            vid: '${{ secrets.VID }}'
+            vkey: '${{ secrets.VKEY }}'
+
         - name: Veracode Pipeline-Scan
           uses: veracode/Veracode-pipeline-scan-action@v1.0.10
         # - name: Verracode Container/IaC/Secrets action step
