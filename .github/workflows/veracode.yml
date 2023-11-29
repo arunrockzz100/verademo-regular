@@ -7,9 +7,9 @@
 
 name: Veracode Static Analysis Pipeline Scan
 
-# on: 
-#   push:
-#   workflow_dispatch:
+on: 
+  push:
+  workflow_dispatch:
     
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -60,3 +60,4 @@ jobs:
       with:
         # Path to SARIF file relative to the root of the repository
         sarif_file: veracode-results.sarif
+##
